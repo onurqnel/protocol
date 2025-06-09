@@ -177,18 +177,24 @@ function NavigationGroup({
       </motion.h2>
       <div className="relative mt-3 pl-2">
         <AnimatePresence initial={!isInsideMobileNavigation}>
-          {isActiveGroup && (
-            <VisibleSectionHighlight group={group} pathname={pathname} />
-          )}
+            {isActiveGroup && (
+              <VisibleSectionHighlight
+                group={group}
+                pathname={pathname || ''}
+              />
+            )}
         </AnimatePresence>
         <motion.div
           layout
           className="absolute inset-y-0 left-2 w-px bg-zinc-900/10 dark:bg-white/5"
         />
         <AnimatePresence initial={false}>
-          {isActiveGroup && (
-            <ActivePageMarker group={group} pathname={pathname} />
-          )}
+            {isActiveGroup && (
+              <ActivePageMarker
+                group={group}
+                pathname={pathname || ''}
+              />
+            )}
         </AnimatePresence>
         <ul role="list" className="border-l border-transparent">
           {group.links.map((link) => (
